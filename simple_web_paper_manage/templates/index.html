@@ -1,0 +1,28 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+<table class="table table-md-responsive table-hover table-bordered">
+<thead>
+<tr>
+<th>标题</th>
+<th>分类</th>
+<th>上传者</th>
+<th>上传时间</th>
+</tr>
+</thead>
+
+<tbody>
+{% for value in values %}
+<tr>
+<td width="50%"><a href="/detail/{{ value[0] }}"  target="_blank">{{ value[1] }}</a></td>
+<td><a href="/?type={{ value[2] }}">{{ value[2] }}</a></td>
+<td ><a href="/?uploader={{ value[3] }}">{{ value[3] }}</a></td>
+<td>{{ value[4] }}</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+<div class="card">
+<div class="card-body">
+<div class="alert alert-info" role="alert">
+你正在为 《 {{doc_info[1]}} 》 进行翻译。
+</div>
+
+<form action="/function_changetranslate" method="POST" enctype=multipart/form-data class="form" role="form">
+<h4>翻译标题</h4>
+<input class="form-control" id="name" name="title_translation" required type="text" value="{{doc_info[2]}}">
+<hr>
+<h4>翻译正文</h4>
+<textarea class="form-control" rows="15" name="content_translation">
+{{doc_info[3] | safe}}
+</textarea>
+<hr>
+<h4>翻译者</h4>
+<input class="form-control" id="name" name="translator" required type="text" value="{{doc_info[5]}}">
+<hr>
+<h4>翻译时间</h4>
+<input class="form-control" id="name" name="translate_time" required type="text" value="{{doc_info[4]}}">
+<br/>
+<input type="hidden"  name="doc_id" value="{{doc_info[0]}}">
+<input class="btn btn-outline-success" type="submit" value="确认修改">
+</form>
+
+
+</div>
+</div>
+
+<br/>
+
+
+{% endblock %}

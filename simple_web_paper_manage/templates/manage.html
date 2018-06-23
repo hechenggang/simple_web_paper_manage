@@ -1,0 +1,19 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+<table class="table table-md-responsive table-hover table-bordered">
+<tbody>
+{% for value in values %}
+<tr>
+<td><a href="/detail/{{ value[0] }}">{{ value[1] }}</a></td>
+<td><a href="/manage_change/{{ value[0] }}">修改</a></td>
+<td><a href="/manage_delete/{{ value[0] }}">删除</a></td>
+<td><a href="#"></a></td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+
+{% endblock %}

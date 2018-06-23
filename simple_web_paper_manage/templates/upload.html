@@ -1,0 +1,67 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+<div class="card">
+<div class="card-body">
+<form action="./function_upload" method="POST" enctype=multipart/form-data class="form" role="form">
+<h4>分类</h4>
+<select class="custom-select" name="dir_parent">
+  <option selected="">点击展开</option>
+  {% for value in values %}
+  <option>{{value}}</option>
+  {% endfor %}
+</select>
+<hr>
+<h4>标题</h4>
+<input class="form-control" id="doc_title" name="doc_title" required type="text">
+<hr>
+<h4>作者</h4>
+<input class="form-control" id="doc_author" name="doc_author" required type="text">
+<hr>
+<h4>引用格式</h4>  
+<input class="form-control" id="doc_reference" name="doc_reference" required type="text">
+<span class="badge badge-success">  <a id="get_doc_reference">尝试自动获取</a></span>
+<hr>
+<h4>详情</h4>
+<textarea class="form-control" rows="6" name="doc_abstract"></textarea>
+<hr>
+<h4>文献类型</h4>
+<div class="radio">
+	<label>
+		<input type="radio" name="doc_type" id="optionsRadios1" value="zh_doc" checked> 中文文献
+	</label>
+</div>
+<div class="radio">
+	<label>
+		<input type="radio" name="doc_type" id="optionsRadios2" value="en_doc"> 外文文献
+	</label>
+</div>
+<hr>
+<h4>上传者</h4>
+<input class="form-control" id="uploader" name="uploader" required type="text">
+<hr>
+<h4>选择文件</h4>
+<input type="file" name="file">
+<hr>
+<input class="btn btn-outline-success" type="submit" value="开始上传">
+</form>
+</div>
+</div>
+
+<script src='http://libs.baidu.com/jquery/1.10.2/jquery.min.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#get_doc_reference').click(function(){
+		var doc_title = $("#doc_title").val();
+        var target_select=document.getElementById("#doc_reference");
+        var url = "/api_get_reference?title="+doc_title;
+		$.get(url,function(data){
+		    $("#doc_reference").val(data);
+		});
+        
+	});	
+});	
+</script>
+
+<br/>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "style.html" %}
+{% block body %}
+
+<hr>
+<h4>整体统计</h4>
+<table class="table table-md-responsive table-bordered">
+<tbody>
+<tr>
+<td>文献总计</td>
+<td>{{ count[0] }}</td>
+</tr>
+<tr>
+<td>中文文献总计</td>
+<td>{{ count[1] }}</td>
+</tr>
+<tr>
+<td>外文文献总计</td>
+<td>{{ count[2] }}</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+<h4>翻译统计</h4>
+<table class="table table-md-responsive table-bordered">
+<tbody>
+<tr>
+{% for info1 in translator_tendency %}
+<td>{{ info1[0] |safe }}</td>
+{% endfor %}
+</tr>
+<tr>
+{% for info2 in translator_tendency %}
+<td>{{ info2[1] |safe }}</td>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+
+<hr>
+<h4>收集统计</h4>
+<table class="table table-md-responsive table-bordered">
+<tbody>
+<tr>
+{% for info3 in uploader_tendency %}
+<td>{{ info3[0] |safe }}</td>
+{% endfor %}
+</tr>
+<tr>
+{% for info4 in uploader_tendency %}
+<td>{{ info4[1] |safe }}</td>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+
+{% endblock %}

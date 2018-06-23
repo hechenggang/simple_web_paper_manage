@@ -1,0 +1,12 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+<div class="alert alert-danger">{{note}}</div>
+<form action="{{gotourl}}" method="POST" enctype=multipart/form-data class="form" role="form">
+<h4>PASSWORD</h4>
+<input class="form-control" id="password" name="password" required type="text">
+<input type="hidden"  name="doc_id" value="{{ doc_id }}">
+<br/>
+<input class="btn btn-outline-danger"  type="submit" value="确认执行">
+</form>
+{% endblock %}

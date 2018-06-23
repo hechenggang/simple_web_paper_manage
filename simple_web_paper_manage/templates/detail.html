@@ -1,0 +1,55 @@
+{% extends "style.html" %}
+{% block body %}
+<br/>
+
+
+<table class="table table-bordered ">
+<tbody>
+
+<tr>
+<td width="7%"><b>阅读原文</b></td>
+<td><a href="/static/pdfjs/web/viewer.html?file=../../docs/{{doc_info[0]}}.{{doc_info[1]}}" target="_blank">《 {{doc_info[2]}} 》</a></td>
+</tr>
+
+<tr>
+<td width="7%"><b>文献操作</b></td>
+<td>
+<button type="button" class="btn btn-outline-primary"><a href="/manage_change/{{ doc_info[0] }}">修改</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/manage_delete/{{ doc_info[0] }}">删除</a></button>
+  <button type="button" class="btn btn-outline-primary"><a href="/get_doc/{{ doc_info[0] }}">下载</a></button>
+</td>
+</tr>
+
+<tr>
+<td><b>文献信息</b></td>
+<td>
+	
+	<p><b>所属分类：</b>{{doc_info[6]}}</p>
+	<p><b>文献格式：</b>{{doc_info[1]}}</p>
+	<p><b>文献作者：</b>{{doc_info[3]}}</p>
+	<p><b>引用格式：</b>{{doc_info[4]}}</p>	
+	<b>补充信息：</b><br/><p>{{doc_info[5] | safe}}</p>
+	<p><b>文献上传者：</b>{{doc_info[7]}}</p>
+	<p><b>文献上传时间：</b>{{doc_info[8]}}</p>
+	
+</td>
+</tr>
+
+{% if trans %}
+<tr>
+<td><b>翻译信息</b></td>
+<td>
+
+	<p><b>翻译人：</b>{{trans[1]}}</p>
+	<p><b>翻译时间：</b>{{trans[2]}}</p>
+	<p><b>翻译正文：</b><br/>{{trans[0] | safe}}</p>
+
+</td>
+</tr>
+{% endif %}
+
+
+</tbody>
+</table>
+
+{% endblock %}
